@@ -9,8 +9,8 @@ I have left out my config.py file as it contains the username/password of my pos
 
 You may have to install the required modules (will check after commit).  To do so activate your venv, and from within your venv run the following:
 
-'''sh
-$ pip3 install -r requirements.txt
-'''
+```bash
+    $ pip3 install -r requirements.txt
+```
 
 For instructions on how to set up your own config.py: follow the link above to Onwuka's tutorial and locate **Step 2: Setting up configuration**
