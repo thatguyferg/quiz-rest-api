@@ -4,6 +4,7 @@ config.py
 
 #Ignore my locally created venv
 env/
+__pycache__/
 
 
 ### PyCharm+all ###

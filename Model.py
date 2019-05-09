@@ -22,11 +22,11 @@ class Question(db.Model):
     __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id', ondelete='CASCADE'), nullable=False)
-    question_text = db.Column(db.String(125), required=True)
-    opt_a = db.Column(db.String(40), required=True)
-    opt_b = db.Column(db.String(40), required=True)
-    opt_c = db.Column(db.String(40), required=True)
-    answer = db.Column(db.String(40), required=True)
+    question_text = db.Column(db.String(125), nullable=False)
+    opt_a = db.Column(db.String(40), nullable=False)
+    opt_b = db.Column(db.String(40), nullable=False)
+    opt_c = db.Column(db.String(40), nullable=False)
+    answer = db.Column(db.String(40), nullable=False)
     last_update = db.Column(db.TIMESTAMP, server_onupdate=db.func.current_timestamp())
 
     def __init__(self, quiz_id, question_text, opt_a, opt_b, opt_c, answer):
