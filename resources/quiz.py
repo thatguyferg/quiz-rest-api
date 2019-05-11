@@ -8,7 +8,7 @@ quiz_schema = QuizSchema()
 class QuizResource(Resource):
     def get(self):
         quizzes = Quiz.query.all()
-        quizzes = quiz_schema.dump(quizzes).data
+        quizzes = quizzes_schema.dump(quizzes).data
         return {'status': 'success', 'data': quizzes}, 200
 
     def post(self):

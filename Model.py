@@ -12,7 +12,6 @@ class Quiz(db.Model):
     name = db.Column(db.String(175), unique=True, nullable=False)
     time_created = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)
     last_update = db.Column(db.TIMESTAMP, server_onupdate=db.func.current_timestamp())
-    questions = db.relationship('Question', backref=db.backref('quizzes', lazy='dynamic'))
 
     def __init__(self, name):
         self.name = name
@@ -22,6 +21,7 @@ class Question(db.Model):
     __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id', ondelete='CASCADE'), nullable=False)
+    quiz = db.relationship('Quiz', backref=db.backref('questions', lazy='dynamic'))
     question_text = db.Column(db.String(125), nullable=False)
     opt_a = db.Column(db.String(40), nullable=False)
     opt_b = db.Column(db.String(40), nullable=False)
@@ -40,6 +40,6 @@ class Question(db.Model):
 
 class QuizSchema(ma.Schema):
     id = fields.Integer()
-    name = fields.String(required=True, validate=validate.Length(1))
+    name = fields.String(required=True)
 
 
