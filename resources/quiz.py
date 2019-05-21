@@ -46,7 +46,7 @@ class QuizResource(Resource):
         json_data = request.get_json(force=True)
         if not json_data:
             return {'message': 'No input data provided'}, 400
-        data, errors = quiz_schema.load(json_data)
+        data, errors = quiz_schema.load(json_data, partial=True)
         if errors:
             return errors, 422
         quiz = Quiz.query.filter_by(id=data['id']).delete()
