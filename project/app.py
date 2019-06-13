@@ -1,6 +1,12 @@
-from project import api
+from flask_restful import Api
+from flask import Blueprint
+
+
 from project.resources.question import QuestionResource, QuestionsResource
 from project.resources.quiz import QuizResource
+
+api_bp = Blueprint('api', __name__)
+api = Api(api_bp)
 
 # Route(s)
 api.add_resource(QuizResource, '/quiz')

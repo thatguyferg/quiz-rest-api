@@ -1,5 +1,9 @@
-from project import db, ma
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
 from marshmallow import fields
+
+db = SQLAlchemy()
+ma = Marshmallow()
 
 
 class Quiz(db.Model):
