@@ -1,5 +1,4 @@
-from flask import Flask, Blueprint
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 
 def create_app(config_filename=None):
@@ -11,8 +10,6 @@ def create_app(config_filename=None):
 
     from project.model import db
     db.init_app(app)
-    
-
 
     return app
 
