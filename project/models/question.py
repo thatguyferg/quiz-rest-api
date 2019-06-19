@@ -1,20 +1,7 @@
-from flask_marshmallow import Marshmallow
-from flask_sqlalchemy import SQLAlchemy
 from marshmallow import fields
 
-db = SQLAlchemy()
-ma = Marshmallow()
 
-
-class Quiz(db.Model):
-    __tablename__ = 'quizzes'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(175), unique=True, nullable=False)
-    time_created = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)
-    last_update = db.Column(db.TIMESTAMP, server_onupdate=db.func.current_timestamp())
-
-    def __init__(self, name):
-        self.name = name
+from . import db, ma
 
 
 class Question(db.Model):
@@ -36,11 +23,6 @@ class Question(db.Model):
         self.opt_b = opt_b
         self.opt_c = opt_c
         self.answer = answer
-
-
-class QuizSchema(ma.Schema):
-    id = fields.Integer()
-    name = fields.String(required=True)
 
 
 class QuestionSchema(ma.Schema):

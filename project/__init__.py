@@ -1,7 +1,7 @@
 from flask import Flask
 
 from .resources import api_bp
-from project.model import db
+from project.models import db
 
 
 def create_app(config_filename=None):
