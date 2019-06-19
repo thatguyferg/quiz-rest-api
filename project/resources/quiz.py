@@ -1,9 +1,12 @@
 from flask import request
 from flask_restful import Resource
-from model import db, Quiz, QuizSchema
+
+from project.models import db
+from project.models.quiz import Quiz, QuizSchema
 
 quizzes_schema = QuizSchema(many=True)
 quiz_schema = QuizSchema()
+
 
 class QuizResource(Resource):
     def get(self):
@@ -21,7 +24,7 @@ class QuizResource(Resource):
         quiz = Quiz.query.filter_by(name=data['name']).first()
         if quiz:
             return {'message': 'Quiz with that name already exists'}, 400
-        quiz = Quiz(name = json_data['name'])
+        quiz = Quiz(name=json_data['name'])
         db.session.add(quiz)
         db.session.commit()
         result = quiz_schema.dump(quiz).data
@@ -40,7 +43,7 @@ class QuizResource(Resource):
         quiz.name = data['name']
         db.session.commit()
         result = quiz_schema.dump(quiz).data
-        return{"status": 'success', 'data': result}, 204
+        return {"status": 'success', 'data': result}, 204
 
     def delete(self):
         json_data = request.get_json(force=True)
