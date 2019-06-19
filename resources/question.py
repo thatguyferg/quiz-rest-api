@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from Model import db, Question, QuestionSchema, Quiz
+from model import db, Question, QuestionSchema, Quiz
 
 questions_schema=QuestionSchema(many=True)
 question_schema=QuestionSchema()

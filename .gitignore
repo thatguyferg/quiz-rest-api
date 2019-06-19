@@ -1,5 +1,5 @@
 # Ignore config.py until I find way to obfuscate my Postgres user/pass
-config.py
+
 
 
 #Ignore my locally created venv
