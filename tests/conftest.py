@@ -1,6 +1,23 @@
 import pytest
+
+
 from project import create_app
-from project.model import db, Quiz, Question
+from project.models import db
+from project.models.quiz import Quiz
+from project.models.question import Question
+
+
+@pytest.fixture(scope='module')
+def new_quiz():
+    quiz = Quiz('Nice Quiz')
+    return quiz
+
+
+@pytest.fixture(scope='module')
+def new_question():
+    question = Question(1, 'How nice is this quiz?', 'Very nice',
+                        'Noice', 'Goog', 'Noice')
+    return question
 
 
 @pytest.fixture(scope='module')
@@ -16,7 +33,11 @@ def test_client():
 
     ctx.pop()
 
+
 @pytest.fixture(scope='module')
 def init_db():
     db.create_all()
 
+    #Quiz and Question objects for testing
+    quiz1 = Quiz('EZ Quiz')
+    quiz2 = Quiz('Medium Quiz')
