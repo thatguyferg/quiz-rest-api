@@ -36,8 +36,25 @@ def test_client():
 
 @pytest.fixture(scope='module')
 def init_db():
+    print("\n\n\n>>>>>>>><<<<<<<<\n\n\n")
+    db.drop_all()
     db.create_all()
 
     #Quiz and Question objects for testing
     quiz1 = Quiz('EZ Quiz')
     quiz2 = Quiz('Medium Quiz')
+    
+
+    db.session.add(quiz1)
+    db.session.add(quiz2)
+    db.session.commit()
+    question = Question(quiz1.id, 'How nice is this quiz?', 'Very nice',
+                        'Noice', 'Goog', 'Noice')
+    db.session.add(question)
+
+    db.session.commit()
+    print("\n\n\n>>>>>>>><<<<<<<<\n\n\n")
+
+    yield db
+
+    
