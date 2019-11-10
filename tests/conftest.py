@@ -46,9 +46,13 @@ def init_db():
     db.session.add(quiz1)
     db.session.add(quiz2)
     db.session.commit()
+
     question = Question(quiz1.id, 'How nice is this quiz?', 'Very nice',
                         'Noice', 'Goog', 'Noice')
+    question2 = Question(quiz2.id, 'Where is Milly right now?', 'On her blanket',
+                        'With her mom', 'Uganda', 'On her blanket')
     db.session.add(question)
+    db.session.add(question2)
 
     db.session.commit()
 

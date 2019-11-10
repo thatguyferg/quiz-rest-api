@@ -8,7 +8,6 @@ class Question(db.Model):
     __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quizzes.id', ondelete='CASCADE'), nullable=False)
-    # quiz = db.relationship('Quiz', backref=db.backref('questions', lazy='dynamic'))
     question_text = db.Column(db.String(125), nullable=False)
     opt_a = db.Column(db.String(40), nullable=False)
     opt_b = db.Column(db.String(40), nullable=False)

@@ -4,7 +4,7 @@ import json
 GET TESTS
 """
 
-def test_quiz_get(test_client, init_db):
+def test_quiz_get_success(test_client, init_db):
 
     response = test_client.get('/api/quiz')
     assert response.status_code == 200
@@ -14,7 +14,7 @@ def test_quiz_get(test_client, init_db):
 POST TESTS
 """
 
-def test_quiz_post(test_client, init_db):
+def test_quiz_post_success(test_client, init_db):
     
     response = test_client.post('/api/quiz', data = json.dumps({'name': 'Ok then'}))
     assert response.status_code == 201

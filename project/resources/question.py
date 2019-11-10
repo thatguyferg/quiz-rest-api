@@ -17,8 +17,6 @@ class QuestionsResource(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        if not json_data:
-            return {'message': 'No input data provided'}, 400
         # validate and deserialize
         data, errors = question_schema.load(json_data)
         if errors:
@@ -41,8 +39,6 @@ class QuestionsResource(Resource):
 
     def put(self):
         json_data = request.get_json(force=True)
-        if not json_data:
-            return {'message': 'No input data'}, 400
         # validate and deserialize
         data, errors = question_schema.load(json_data)
         if errors:
@@ -62,8 +58,6 @@ class QuestionsResource(Resource):
 
     def delete(self):
         json_data = request.get_json(force=True)
-        if not json_data:
-            return {'message': 'No input data provided'}, 400
         data, errors = question_schema.load(json_data)
         if errors:
             return errors, 422
